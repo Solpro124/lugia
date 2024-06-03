@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$LUGIA</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/188/188918.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <style>
+        .logo {
+            width: 40px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        .copy-text {
+            text-align: center;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            color: #1a73e8;
+            font-size: 14px;
+            cursor: pointer;
+            position: fixed;
+            top: 10px;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: fit-content;
+            z-index: 9999;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .copy-text:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #ffffff, #1a73e8, #ffffff);
+            color: #fff;
+            position: relative;
+            z-index: 1;
+            animation: background-transition 15s ease infinite alternate;
+        }
+
+        @keyframes background-transition {
+            0% {
+                background: linear-gradient(135deg, #ffffff, #1a73e8, #ffffff);
+            }
+
+            100% {
+                background: linear-gradient(135deg, #1a73e8, #ffffff, #1a73e8);
+            }
+        }
+
+        header {
+            background: rgba(26, 115, 232, 0.8);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 2;
+            backdrop-filter: blur(10px);
+        }
+
+        header h1 {
+            color: #fff;
+            font-size: 1.8em;
+            margin: 0;
+            text-shadow: 0 0 10px #1a73e8, 0 0 20px #1a73e8, 0 0 30px #1a73e8;
+            animation: header-glow 1.5s infinite alternate;
+        }
+
+        @keyframes header-glow {
+            from {
+                text-shadow: 0 0 10px #1a73e8, 0 0 20px #1a73e8, 0 0 30px #1a73e8;
+            }
+
+            to {
+                text-shadow: 0 0 20px #1a73e8, 0 0 30px #1a73e8, 0 0 40px #1a73e8;
+            }
+        }
+
+        .buttons {
+            display: flex;
+        }
+
+        .buttons a {
+            text-decoration: none;
+            color: #1a73e8;
+            background: #fff;
+            padding: 10px 20px;
+            margin-left: 10px;
+            border-radius: 5px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .buttons a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+            text-align: center;
+            color: #1a73e8;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero img {
+            width: 63px;
+            margin-bottom: 20px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .hero img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            animation: text-glow 2s infinite alternate;
+        }
+
+        @keyframes text-glow {
+            from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff;
+            }
+
+            to {
+                text-shadow: 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff;
+            }
+        }
+
+        .content {
+            padding: 50px 20px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            animation: text-glow 2s infinite alternate;
+        }
+
+        .content p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: text-glow 2s infinite alternate;
+        }
+        .scrolling-text-container {
+            position: fixed;
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            z-index: 1;
+            padding: 10px 0;
+            color: #1a73e8;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .scrolling-text {
+            display: inline-block;
+            font-size: 1.5em;
+            animation: scroll 10s linear infinite;
+        }
+
+        @keyframes scroll {
+            from {
+                transform: translateX(100%);
+            }
+
+            to {
+                transform: translateX(-100%);
+            }
+        }
+        .tokenomics {
+            margin-top: 25px;
+            padding: 20px;
+            background-color: rgba(26, 115, 232, 0.8);
+            border-radius: 10px;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 800px;
+        }
+        .about-section {
+            margin-top: 25px;
+            padding: 20px;
+            background-color: rgba(26, 115, 232, 0.8);
+            border-radius: 10px;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 800px;
+        }
+
+
+        .disclaimer {
+            padding: 20px;
+            background: rgba(26, 115, 232, 0.8);
+            color: #fff;
+            text-align: center;
+            font-size: 0.9em;
+            position: relative;
+            z-index: 1;
+            margin-top: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .background-img {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            pointer-events: none;
+            animation: background-glow 15s linear infinite;
+        }
+
+        @keyframes background-glow {
+            0%,
+            100% {
+                filter: hue-rotate(0deg);
+            }
+
+            50% {
+                filter: hue-rotate(360deg);
+            }
+        }
+
+        .buy-button {
+            text-decoration: none;
+            color: #1a73e8;
+            background: #fff;
+            padding: 10px 20px;
+            margin-left: 10px;
+            border-radius: 5px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            animation: button-glow 2s infinite alternate;
+        }
+
+        .buy-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes
+        .buy-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes button-glow {
+            from {
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            }
+
+            to {
+                box-shadow: 0 0 20px rgba(255, 255, 255, 1);
+            }
+        }
+
+        @keyframes header-glow {
+            from {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            }
+
+            to {
+                text-shadow: 0 0 20px rgba(255, 255, 255, 1);
+            }
+        }
+
+        .video-container {
+    margin-top: 20px;
+    width: 60%; /* Adjust the width as needed */
+    max-width: 600px; /* Adjust the maximum width if necessary */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    padding-top: 33.75%; /* Maintain aspect ratio */
+}
+
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="copy-text" onclick="copyToClipboard()">CA: 0x2c7d23fda0ee15b02e6120da41e364d3c5566b53</div>
+
+    <header>
+        <div style="display: flex; align-items: center;">
+            <img src="https://bafkreia5ttojfcujaafadfe2hrywedbw5xzl2pluidwb5g7ek5vg5s3cou.ipfs.nftstorage.link/" class="logo" alt="Logo">
+            <h1>$LUGIA</h1>
+        </div>
+        <div class="buttons">
+            <a href="#" class="buy-button">Buy</a>
+            <a href="https://basedlugia.com" class="buy-button">Telegram</a>
+            <a href="https://x.com/BaseLugia" class="buy-button">Twitter</a>
+        </div>
+    </header>
+
+    <div class="hero">
+        <img src="https://cdn-icons-png.flaticon.com/512/188/188918.png" alt="LUGIA">
+        <p>A wild $LUGIA appeared!</p>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/Sr_EE7Q-x9g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="tokenomics">
+            <h2 class="glow">TOKENOMICS:</h2>
+            <p>85% LP</p>
+            <p>10% TEAM</p>
+            <p>5% MARKETING</p>
+        </div>
+        <h2>About $LUGIA</h2>
+        <p>Lugia, a legendary Psychic- and Flying-type Pokémon, has wings that are so powerful that even a gentle flutter can destroy a house. Because of this, Lugia lives in secret deep beneath the ocean. It's also said to be the guardian of the seas.</p>
+    </div>
+
+    <div class="scrolling-text-container">
+        <div class="scrolling-text">$LUGIA &nbsp;&nbsp;&nbsp; $LUGIA &nbsp;&nbsp;&nbsp; $LUGIA &nbsp;&nbsp;&nbsp; $LUGIA &nbsp;&nbsp;&nbsp; $LUGIA &nbsp;&nbsp;&nbsp; $LUGIA &nbsp;&nbsp;&nbsp; $LUGIA &nbsp;&nbsp;&nbsp; $LUGIA &nbsp;&nbsp;&nbsp; $LUGIA &nbsp;&nbsp;&nbsp; $LUGIA &nbsp;&nbsp;&nbsp; $LUGIA &nbsp;&nbsp;&nbsp; $LUGIA</div>
+    </div>
+</div>
+    <div class="disclaimer">
+        Disclaimer: Disclaimer: Lugia is a memecoin made purely for entertainment purposes and should not be interpreted as financial advice. Cryptocurrency investments are subject to high market risk. Please make your investments cautiously.
+    </div>
+
+    <img src="https://cdn.pixabay.com/photo/2016/11/18/14/56/pokemon-1832040_960_720.jpg" class="background-img" alt="Background">
+
+    <script>
+        function copyToClipboard() {
+            const copyText = document.createElement('textarea');
+            copyText.value = '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe';
+            document.body.appendChild(copyText);
+            copyText.select();
+            document.execCommand('copy');
+            document.body.removeChild(copyText);
+            alert('Copied to clipboard: 0x2c7d23fda0ee15b02e6120da41e364d3c5566b53');
+        }
+    </script>
+</body>
+
+</html>
